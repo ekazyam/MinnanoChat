@@ -26,13 +26,17 @@ app.on("ready", function() {
 		"show": true,
 		"skip-taskbar": true,
 		"icon": (__dirname + '/img/icon.png'),
+		"web-prefeences": {
+			"web-security": false,
+			"allowDisplayingInsecureContent": true,
+			"allowRunningInsecureContent":true 
+		}
 	});
 
 	// index.html を開く
 	mainWindow.loadUrl("file://" + __dirname + "/index.html");
 
 	// タスクトレイに格納
-	var Menu = require("menu");
 	var Tray = require("tray");
 	var nativeImage = require("native-image");
 
@@ -79,20 +83,6 @@ app.on("ready", function() {
 	// メニューバー作成。
 	function create_menubar()
 	{
-		var menu = Menu.buildFromTemplate([
-		{
-			label: '部屋一覧',
-			submenu: [
-				{label: 'パソコンの部屋',click: select_room},
-			]
-			},
-		]);
-		mainWindow.setMenu(menu);
-	}
-
-	//部屋移動
-	function select_room()
-	{
-		mainWindow.loadURL('http://chat.firebird.jp/pc/index.html');
+		mainWindow.setMenu(null);
 	}
 });
