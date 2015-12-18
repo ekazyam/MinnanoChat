@@ -6,6 +6,7 @@ jQuery(function($){
 	$('#links li a').click(function() {
 		var href = $(this).attr('href');
 		$('#content').load(href);
+		url_store(href);
 		return false;
 	});  
 });
