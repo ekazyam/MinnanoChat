@@ -1,24 +1,11 @@
 $(document).ready(function() {
-	$("#my-menu").mmenu();
+	$("#mm-menu").mmenu();
 });
 
 jQuery(function($){
 	$('#links li a').click(function() {
 		var href = $(this).attr('href');
-        $.ajax({
-            url: href,
-            type: "GET",
-            dataType:"html",
-            success: function(data)
-            {
-            	$('#content').html(data);
-            	console.log(data);
-            },
-            error: function(data)
-            {
-            	console.log(data);
-            }
-        });
+		$('#content').load(href);
 		return false;
 	});  
 });
