@@ -8,11 +8,6 @@ function read_bookmark()
 }
 
 function writeToLocal(filename, content) {
-    // chrome以外は弾く
-    var ua = navigator.userAgent.toLowerCase();
-    if (ua.indexOf('chrome') == -1) {
-        alert("This Page is Google Chrome only!");
-    }
 
     function errorCallback(e) {
         alert("Error: " + e.name);
@@ -35,8 +30,7 @@ function writeToLocal(filename, content) {
             }, errorCallback);
         }, errorCallback);
     }
-    // クオータを要求する。PERSISTENTでなくTEMPORARYの場合は
-    // 直接 webkitRequestFileSystem を呼んでよい
+
     webkitStorageInfo.requestQuota(PERSISTENT, 1024,
         webkitRequestFileSystem(PERSISTENT, 1024, fsCallback, errorCallback),
     errorCallback);
@@ -44,10 +38,12 @@ function writeToLocal(filename, content) {
 
 function url_store(moved_url) {
     if (typeof url_store.url === 'undefined') {
+        // トップページをデフォルトで追加する。
         url_store.url = './index.html';
     }
     else
     {
+        // 遷移時にurlを保存する。
         url_store.url = moved_url;
     }
 }
