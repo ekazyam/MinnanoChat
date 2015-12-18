@@ -3,7 +3,7 @@
 // アプリケーションをコントロールするモジュール
 var app = require('app');
 // ウィンドウを作成するモジュール
-const BrowserWindow = require('electron').BrowserWindow;
+var BrowserWindow = require('browser-window');
 
 // クラッシュレポート
 require('crash-reporter').start();
