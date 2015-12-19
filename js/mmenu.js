@@ -1,5 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function(e) {
 	$("#mm-menu").mmenu();
+
+	// ブックマークが存在した場合にロード。
+	read_bookmark();
 });
 
 jQuery(function($){
@@ -14,3 +17,5 @@ jQuery(function($){
 		return false;
 	});
 });
+
+
