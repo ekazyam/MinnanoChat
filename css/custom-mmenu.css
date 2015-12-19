@@ -356,9 +356,9 @@ html.mm-blocking #mm-blocker {
   display: block; }
 
 .mm-menu {
-  width: 80%;
-  min-width: 140px;
-  max-width: 440px; }
+  width: 20%;
+  min-width: 175px;
+  max-width: 175px; }
 
 html.mm-opening .mm-slideout {
   -webkit-transform: translate(80%, 0);
@@ -374,10 +374,12 @@ html.mm-opening .mm-slideout {
     -ms-transform: translate(140px, 0);
     -o-transform: translate(140px, 0);
     transform: translate(140px, 0); } }
-@media all and (min-width: 550px) {
+@media all and (min-width: 175px) {
   html.mm-opening .mm-slideout {
-    -webkit-transform: translate(440px, 0);
-    -moz-transform: translate(440px, 0);
-    -ms-transform: translate(440px, 0);
-    -o-transform: translate(440px, 0);
-    transform: translate(440px, 0); } }
+    -webkit-transform: translate(175px, 0);
+    -moz-transform: translate(175px, 0);
+    -ms-transform: translate(175px, 0);
+    -o-transform: translate(175px, 0);
+    transform: translate(175px, 0); } }
+
+.mm-menu.mm-left { width: 175px !important; }

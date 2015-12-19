@@ -9,7 +9,7 @@
 {
 	font-family: 'Noto Sans Japanese', serif;
 	font-size: 14px;
-	line-height: 16px;
+	line-height: 16px;	
 	padding: 8px 10px;
 	border-radius: 10px; 
 	border: 1px solid #cccccc;
@@ -21,3 +21,4 @@ body
 {
 	font-family: 'Noto Sans Japanese', serif;
 }
+.mm-menu.mm-left { width: 100px !important; }
