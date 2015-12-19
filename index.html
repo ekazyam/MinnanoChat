@@ -17,16 +17,22 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/5.5.3/core/js/jquery.mmenu.min.js" type="text/javascript"></script>
 	<script src="./js/mmenu.js" ></script>
 	<script src="./js/bookmark.js" ></script>
+	<script src="./js/refresh.js" ></script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/5.5.3/core/css/jquery.mmenu.css" type="text/css" rel="stylesheet" />
-	<a href="#mm-menu"><img src="./img/menu_1.png"></a>
-	<a href="#" onclick="write_bookmark(); return false;"><img src="./img/menu_2.png"></a>
-	<a href="#" onclick="read_bookmark(); return false;"><img src='./img/menu_3.png'></a>
-	<a href="#" onclick="refresh(); return false;"><img src='./img/menu_4.png'></a>
+	<a href="#mm-menu" class="tooltip" title="部屋一覧"><img src="./img/menu_1.png"></a>
+	<a href="#" class="tooltip" title="お気に入り登録" onclick="write_bookmark(); return false;"><img src="./img/menu_2.png"></a>
+	<a href="#" class="tooltip" title="ホームへ移動"onclick="read_bookmark(); return false;"><img src='./img/menu_3.png'></a>
+	<a href="#" class="tooltip" title="更新" onclick="refresh(); return false;" alt="更新"><img src='./img/menu_4.png'></a>
 
 	<!-- アラート -->
 	<script src="./js/alertify.min.js" ></script>
-	<link rel="stylesheet" href="./css/alertify.core.css" type="text/css" rel="stylesheet" />
-	<link rel="stylesheet" href="./css/alertify.default.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" href="./css/themes_alert/alertify.core.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" href="./css/themes_alert/alertify.default.css" type="text/css" rel="stylesheet" />
+
+	<!-- ツールチップ -->
+	<script src="./js/jquery.tooltipster.min.js" ></script>
+	<script src="./js/tooltip.js" ></script>
+	<link rel="stylesheet" href="./css/tooltipster.css" type="text/css" rel="stylesheet" />
 
 </head>
 
