@@ -50,8 +50,9 @@ function onloadInit() {
 					function(file) {
 						var reader = new FileReader();
 						reader.onloadend = function(e) {
-							url_bookmark = e.target.result;
-							$('#content').load(url_bookmark.replace(/\.html.*$/g, '.html'));
+							var url_bookmark = e.target.result.replace(/\.html.*$/g, '.html');
+							$('#content').load(url_bookmark);
+                            url_store(url_bookmark);
 						};
 						reader.readAsText(file);
 					});
