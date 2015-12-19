@@ -125,9 +125,7 @@
 		border: 1px solid #EED3D7;
 	}
 	.alertify-log-success {
-		background: #9ACD32;
-		color: #FFFFFF;
-		border-radius: 5px; 
-		font-size: 16px;
-		padding: 13px;
+		color: #468847;
+		background: #DFF0D8;
+		border: 1px solid #D6E9C6;
 	}
