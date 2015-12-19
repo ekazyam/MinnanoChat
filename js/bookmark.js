@@ -4,7 +4,7 @@ function write_bookmark()
 }
 function read_bookmark()
 {
-    alert('OK');
+    onloadInit();
 }
 
 function writeToLocal(filename, content) {
@@ -34,6 +34,26 @@ function writeToLocal(filename, content) {
     webkitStorageInfo.requestQuota(PERSISTENT, 1024,
         webkitRequestFileSystem(PERSISTENT, 1024, fsCallback, errorCallback),
     errorCallback);
+}
+
+function onloadInit() {
+    navigator.webkitPersistentStorage.requestQuota(1024*1024*5, function(bytes) {
+         window.webkitRequestFileSystem(window.PERSISTENT, bytes, function(fs) {
+           // ファイル取得
+           fs.root.getFile('bookmark.txt', {create: true}, function(fileEntry) {
+                 fileEntry.file(
+                    function(file) {
+                        var reader = new FileReader();
+                        reader.onloadend = function(e) {
+                            url_bookmark = e.target.result;
+                            $('#content').load(url_bookmark.replace(/\.html.*$/g, '.html'));
+                        };
+                        reader.readAsText(file);
+                    });
+                });
+            });
+        }
+    );
 }
 
 function url_store(moved_url) {
