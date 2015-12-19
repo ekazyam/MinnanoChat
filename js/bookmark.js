@@ -1,12 +1,16 @@
+// ブックマークを登録する。
 function write_bookmark()
 {
 	writeToLocal("bookmark.txt", get_url());
 }
+
+// ブックマークを読みだし移動する。
 function read_bookmark()
 {
 	onloadInit();
 }
 
+// ブックマークのファイル出力。
 function writeToLocal(filename, content) {
 
 	function errorCallback(e) {
@@ -36,6 +40,7 @@ function writeToLocal(filename, content) {
 	errorCallback);
 }
 
+// ブックマークのファイル読み出し。
 function onloadInit() {
 	navigator.webkitPersistentStorage.requestQuota(1024*1024*5, function(bytes) {
 		 window.webkitRequestFileSystem(window.PERSISTENT, bytes, function(fs) {
@@ -56,6 +61,7 @@ function onloadInit() {
 	);
 }
 
+// 画面遷移時のURLをstaticとして保持する。
 function url_store(moved_url) {
 	if (typeof url_store.url === 'undefined') {
 		// トップページをデフォルトで追加する。
@@ -68,6 +74,7 @@ function url_store(moved_url) {
 	}
 }
 
+// 画面遷移時に保持したURLを取得するgetter関数。
 function get_url()
 {
 	return url_store.url;
