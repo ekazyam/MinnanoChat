@@ -12,5 +12,5 @@ jQuery(function($){
 		// 遷移したURLを保持
 		url_store(href);
 		return false;
-	});  
+	});
 });
