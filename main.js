@@ -5,6 +5,9 @@ var app = require('app');
 // ウィンドウを作成するモジュール
 var BrowserWindow = require('browser-window');
 
+// タスクトレイのメニューを構成するモジュール
+var Menu = require("menu");
+
 // クラッシュレポート
 require('crash-reporter').start();
 
@@ -62,6 +65,15 @@ app.on("ready", function() {
 				mainWindow.focus();
 			}
 		});
+		// タスクトレイのメニューを定義
+		var contextMenu = Menu.buildFromTemplate([
+    	    { label: "終了", click: function () { mainWindow.close(); } }
+    	]);
+
+    	trayIcon.setContextMenu(contextMenu);
+
+    	trayIcon.setToolTip('みんなのチャット');
+
 		return trayIcon;
 	}
 
