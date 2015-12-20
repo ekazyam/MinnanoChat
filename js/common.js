@@ -18,11 +18,17 @@ jQuery(function($){
 	    }
 	    // リサイズが終わってからCSSを変更する。
 	    timer = setTimeout(function() {
-	    	// リサイズ後のウインドウサイズ-50pxぐらいがちょうど良い様子。
-	    	var new_height = $(window).height() - 50;
 
-	    	// 新しい高さを設定する。
-	    	$('.container_chat').height(new_height);
+	  	// ウインドウサイズのりサイズ
+	    window_resize();
 	    }, WAIT_TIME);
 	});
 });
+
+function window_resize()
+{
+   	// リサイズ後のウインドウサイズ-50pxぐらいがちょうど良い様子。
+   	var new_height = $(window).height() - 50;
+   	// 新しい高さを設定する。
+   	$('.container_chat').height(new_height);
+}
