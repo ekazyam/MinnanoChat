@@ -8,6 +8,9 @@ var BrowserWindow = require('browser-window');
 // タスクトレイのメニューを構成するモジュール
 var Menu = require("menu");
 
+// 意図的なクローズを判定するフラグ
+var close_flag = false;
+
 // クラッシュレポート
 require('crash-reporter').start();
 
@@ -67,8 +70,13 @@ app.on("ready", function() {
 		});
 		// タスクトレイのメニューを定義
 		var contextMenu = Menu.buildFromTemplate([
-    	    { label: "終了", click: function () { mainWindow.close(); } }
-    	]);
+    	{
+    		label: "終了", click: function ()
+    	    { 
+    	    	close_flag = true;
+    	    	mainWindow.close();
+    	 	}
+    	}]);
 
     	trayIcon.setContextMenu(contextMenu);
 
@@ -87,8 +95,18 @@ app.on("ready", function() {
 
 		// 閉じるボタン選択時にイベントを最小化として処理する。
 	    mainWindow.on('close', function(e){
-            e.preventDefault();
-            mainWindow.hide();
+	    	if(close_flag)
+	    	{
+	    		// タスクトレイから終了時にアプリケーションを終了する。
+	    		mainWindow.destroy();
+	    		mainWindow = null;
+	    	}
+	    	else
+	    	{
+	    		// ウインドウのバツを選択時はタスクトレイに最小化する。
+	            e.preventDefault();
+	            mainWindow.hide();
+	    	}
 	    });
 
 		// 閉じるボタン選択時にイベントを最小化として処理する。
