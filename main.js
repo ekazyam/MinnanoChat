@@ -77,7 +77,19 @@ app.on("ready", function() {
 		// 閉じた後のイベント時にリソースを解放
 		mainWindow.on('closed', function() {
 			mainWindow = null;
-		});		
+		});
+
+		// 閉じるボタン選択時にイベントを最小化として処理する。
+	    mainWindow.on('close', function(e){
+            e.preventDefault();
+            mainWindow.hide();
+	    });
+
+		// 閉じるボタン選択時にイベントを最小化として処理する。
+	    app.on('before-quit', function (e) {
+            e.preventDefault();
+            mainWindow.hide();
+	    });
 	}
 
 	// メニューバー作成。
