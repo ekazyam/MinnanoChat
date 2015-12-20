@@ -31,6 +31,11 @@ app.on("ready", function() {
 		"show": true,
 		"skip-taskbar": true,
 		"icon": (__dirname + '/img/icon.png'),
+		"web-prefeences": {
+			"web-security": false,
+			"allowDisplayingInsecureContent": true,
+			"allowRunningInsecureContent":true
+		}
 	});
 
 	// index.html を開く
