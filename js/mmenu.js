@@ -2,8 +2,7 @@ $(document).ready(function(e) {
 	$("#mm-menu").mmenu({
 		classes: "my-custom-width",
 		navbar: {
-			title:'',
-			titleLink:"none"
+			add:false,
 		}
 	});
 
