@@ -16,6 +16,10 @@
 	color: #666666;
 }
 
+::-webkit-scrollbar {
+    width: 0px;
+}
+
 body
 {
 	font-family: 'Noto Sans Japanese', serif;
