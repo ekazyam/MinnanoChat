@@ -13,4 +13,3 @@ $(document).ready(function(e) {
 	// ブックマークが存在した場合にロード。
 	read_bookmark();
 });
-
