@@ -16,7 +16,7 @@ jQuery(function($){
 
 	$('#do_refresh').click(function() {
 		// index.htmlのobject要素にURLを読み込む
-		$('#content').load(get_url);
+		$('#content').load(get_url());
 
 		// 画面リサイズイベントを発火
 		$(window).trigger('resize');
