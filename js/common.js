@@ -22,16 +22,6 @@ jQuery(function($){
 		$(window).trigger('resize');
 
 		return false;
-	});
-
-	$('#do_refresh').click(function() {
-		// index.htmlのobject要素にURLを読み込む
-		$('#content').load(get_url);
-
-		// 画面リサイズイベントを発火
-		$(window).trigger('resize');
-
-		return false;
 	});	
 
 	$('#go_home').click(function() {
