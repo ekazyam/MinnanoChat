@@ -23,11 +23,15 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/5.5.3/core/js/jquery.mmenu.min.js" type="text/javascript"></script>
 	<script src="./js/mmenu.js" ></script>
 	<script src="./js/bookmark.js" ></script>
-	<link rel="stylesheet" href="./css/custom-mmenu.css" type="text/css" media="all"> 
-	<a href="#mm-menu" class="tooltip" title="部屋一覧"><img src="./img/menu_1.png"></a>
-	<a href="#" class="tooltip" title="お気に入り登録" onclick="write_bookmark(); return false;"><img src="./img/menu_2.png"></a>
-	<a href="#" class="tooltip" id="go_home" title="ホームへ移動"onclick="read_bookmark(); return false;"><img src='./img/menu_3.png'></a>
-	<a href="#" class="tooltip" id="do_refresh" title="更新" onclick="refresh(); return false;" alt="更新"><img src='./img/menu_4.png'></a>
+	<link rel="stylesheet" href="./css/custom-mmenu.css" type="text/css" media="all">
+	<div class="menu_list">
+		<div class="menu_image">
+			<a href="#mm-menu" class="tooltip" title="部屋一覧"><img src="./img/menu_1.png"></a>
+			<a href="#" class="tooltip" title="お気に入り登録" onclick="write_bookmark(); return false;"><img src="./img/menu_2.png"></a>
+			<a href="#" class="tooltip" id="go_home" title="ホームへ移動"onclick="read_bookmark(); return false;"><img src='./img/menu_3.png'></a>
+			<a href="#" class="tooltip" id="do_refresh" title="更新" onclick="refresh(); return false;" alt="更新"><img src='./img/menu_4.png'></a>
+		</div>
+	</div>
 
 	<!-- mmenu extentions -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/5.5.3/extensions/css/jquery.mmenu.pageshadow.css">

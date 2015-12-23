@@ -15,7 +15,7 @@ jQuery(function($){
 	});
 
 	$('#do_refresh').click(function() {
-		// index.htmlのobject要素にURLを読み込む
+		// 現在表示しているURLを読み込む
 		$('#content').load(get_url());
 
 		// 画面リサイズイベントを発火
@@ -25,6 +25,7 @@ jQuery(function($){
 	});	
 
 	$('#go_home').click(function() {
+		// ブックマーク登録したホームURLを読み込む
 		read_bookmark();
 
 		// 画面リサイズイベントを発火

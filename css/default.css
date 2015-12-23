@@ -2,6 +2,16 @@
 	width: 100%;
 }
 
+.menu_list
+{
+	background: #e0e0e0;
+}
+
+.menu_image
+{
+	vertical-align: middle;
+}
+
 .my-custom-theme
 .tooltipster-content
 {
