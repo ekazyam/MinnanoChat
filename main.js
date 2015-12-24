@@ -14,6 +14,9 @@ var close_flag = false;
 // クラッシュレポート
 require('crash-reporter').start();
 
+// コンフィグ書き出し用モジュール
+var fs = require('fs');
+
 // メインウィンドウはGCされないようにグローバル宣言
 var mainWindow = null;
 
@@ -26,16 +29,28 @@ app.on('window-all-closed', function() {
 
 // Electronの初期化完了後に実行
 app.on("ready", function() {
+
+	var window_info;
+	try
+	{
+	    window_info = JSON.parse(fs.readFileSync('mincha.conf', 'utf8'));
+	}
+	catch(e)
+	{
+	    window_info = JSON.parse('{"x":0,"y":0,"width":800,"height":512}');
+	}
 	mainWindow = new BrowserWindow({
-		// ウィンドウ作成時のオプション
-		"show": true,
+		"x":window_info["x"],
+		"y":window_info["y"],
+		"width":window_info["width"],
+		"height":window_info["height"],
 		"skip-taskbar": true,
 		"icon": (__dirname + '/img/icon.png'),
 		"web-prefeences": {
 			"web-security": false,
 			"allowDisplayingInsecureContent": true,
-			"allowRunningInsecureContent":true
-		}
+			"allowRunningInsecureContent":true,
+		},
 	});
 
 	// index.html を開く
@@ -102,6 +117,8 @@ app.on("ready", function() {
 	    mainWindow.on('close', function(e){
 	    	if(close_flag)
 	    	{
+	    		// 閉じる直前のサイズと座標を保持する。
+	    		fs.writeFileSync('mincha.conf', JSON.stringify(mainWindow.getBounds()));
 	    		// タスクトレイから終了時にアプリケーションを終了する。
 	    		mainWindow.destroy();
 	    		mainWindow = null;
