@@ -1,5 +1,7 @@
 'use strict';
 
+const electron = require('electron');
+
 // アプリケーションをコントロールするモジュール
 var app = require('app');
 // ウィンドウを作成するモジュール
@@ -30,6 +32,10 @@ app.on('window-all-closed', function() {
 // Electronの初期化完了後に実行
 app.on("ready", function() {
 
+	// 画面サイズを取得する。
+	var electronScreen = electron.screen;
+	var size = electronScreen.getPrimaryDisplay().workAreaSize;
+
 	var window_info;
 	try
 	{
@@ -37,11 +43,12 @@ app.on("ready", function() {
 	}
 	catch(e)
 	{
-	    window_info = JSON.parse('{"x":0,"y":0,"width":800,"height":512}');
+	    window_info = JSON.parse('{"width":700,"height":512}');
 	}
 	mainWindow = new BrowserWindow({
-		"x":window_info["x"],
-		"y":window_info["y"],
+		// 画面の右下(タスクバー欄)をデフォルト表示欄として固定する。
+		"x":size["width"] - window_info["width"],
+		"y":size["height"] - window_info["height"],
 		"width":window_info["width"],
 		"height":window_info["height"],
 		"skip-taskbar": true,
