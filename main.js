@@ -1,7 +1,5 @@
 'use strict';
 
-const electron = require('electron');
-
 // アプリケーションをコントロールするモジュール
 var app = require('app');
 // ウィンドウを作成するモジュール
@@ -33,9 +31,10 @@ app.on('window-all-closed', function() {
 app.on("ready", function() {
 
 	// 画面サイズを取得する。
-	var electronScreen = electron.screen;
-	var size = electronScreen.getPrimaryDisplay().workAreaSize;
+	const Screen = require('screen')
+	const size = Screen.getPrimaryDisplay().size
 
+	// 保存した画面サイズ/ポジションを取得する。
 	var window_info;
 	try
 	{
