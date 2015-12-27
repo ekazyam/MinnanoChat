@@ -66,23 +66,31 @@ app.on("ready", function() {
 	var Tray = require("tray");
 	var nativeImage = require("native-image");
 
-	var trayIcon = new Tray(nativeImage.createFromPath(__dirname + "/img/icon.png"));
+	var tray = new Tray(nativeImage.createFromPath(__dirname + "/img/icon.png"));
 
 	// タスクトレイのツールチップをアプリ名にする。
-	trayIcon.setToolTip(app.getName());
+	tray.setToolTip(app.getName());
 
 	// メニューバーを作成
 	create_menubar();
 
 	// イベントハンドラー設定
-	trayIcon = set_tray_event_handler(trayIcon)
+	tray = set_tray_event_handler(tray)
 	set_window_event_handler()
 
+	tray.displayBalloon({
+        title: "みんなのチャット",
+        content: "起動しました。"
+    });
+
+    // 最小化で起動する。
+    mainWindow.hide();
+
 	// タスクトレイ用のイベントハンドラーを設定する。
-	function set_tray_event_handler(trayIcon)
+	function set_tray_event_handler(tray)
 	{
 		// タスクトレイアイコンをクリックで表示/非表示をトグルする。
-		trayIcon.on("clicked", function () {
+		tray.on("clicked", function () {
 			if(mainWindow.isVisible())
 			{
 				mainWindow.hide();
@@ -104,11 +112,11 @@ app.on("ready", function() {
     	 	}
     	}]);
 
-    	trayIcon.setContextMenu(contextMenu);
+    	tray.setContextMenu(contextMenu);
 
-    	trayIcon.setToolTip('みんなのチャット');
+    	tray.setToolTip('みんなのチャット');
 
-		return trayIcon;
+		return tray;
 	}
 
 	// ウインドウ用のイベントハンドラーを設定する。
