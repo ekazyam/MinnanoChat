@@ -43,14 +43,18 @@ function writeToLocal(filename, content) {
 // ブックマークのファイル読み出し。
 function onloadInit() {
 	navigator.webkitPersistentStorage.requestQuota(1024*1024*5, function(bytes) {
-		 window.webkitRequestFileSystem(window.PERSISTENT, bytes, function(fs) {
+		window.webkitRequestFileSystem(window.PERSISTENT, bytes, function(fs) {
 		   // ファイル取得
 		   fs.root.getFile('bookmark.txt', {create: true}, function(fileEntry) {
-				 fileEntry.file(
+				fileEntry.file(
 					function(file) {
 						var reader = new FileReader();
 						reader.onloadend = function(e) {
 							var url_bookmark = e.target.result.replace(/\.html.*$/g, '.html');
+
+							// ブックマークの未登録チェック
+							if(url_bookmark.length == 0)return;
+
 							$('#content').load(url_bookmark);
                             url_store(url_bookmark);
 						};
