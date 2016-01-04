@@ -30,6 +30,7 @@ app.on('window-all-closed', function() {
 // Electronの初期化完了後に実行
 app.on("ready", function() {
 
+
 	// 画面サイズを取得する。
 	const Screen = require('screen')
 	const size = Screen.getPrimaryDisplay().size
@@ -59,6 +60,9 @@ app.on("ready", function() {
 		},
 	});
 
+    // 最小化で起動する。
+    mainWindow.minimize();
+    
 	// index.html を開く
 	mainWindow.loadUrl("file://" + __dirname + "/index.html");
 
@@ -83,8 +87,6 @@ app.on("ready", function() {
         content: "起動しました。"
     });
 
-    // 最小化で起動する。
-    mainWindow.hide();
 
 	// タスクトレイ用のイベントハンドラーを設定する。
 	function set_tray_event_handler(tray)
@@ -141,14 +143,14 @@ app.on("ready", function() {
 	    	{
 	    		// ウインドウのバツを選択時はタスクトレイに最小化する。
 	            e.preventDefault();
-	            mainWindow.hide();
+	            mainWindow.minimize();
 	    	}
 	    });
 
 		// 閉じるボタン選択時にイベントを最小化として処理する。
 	    app.on('before-quit', function (e) {
             e.preventDefault();
-            mainWindow.hide();
+            mainWindow.minimize();
 	    });
 	}
 
