@@ -20,6 +20,9 @@ var fs = require('fs');
 // メインウィンドウはGCされないようにグローバル宣言
 var mainWindow = null;
 
+// GC対策(タスクトレイのアイコンが定時的に解放されてしまう不具合を解消)
+var tray; 
+
 // 全てのウィンドウが閉じたら終了
 app.on('window-all-closed', function() {
 	if (process.platform != 'darwin') {
@@ -61,7 +64,7 @@ app.on("ready", function() {
 	});
 
     // 最小化で起動する。
-    mainWindow.minimize();
+    mainWindow.hide();
     
 	// index.html を開く
 	mainWindow.loadUrl("file://" + __dirname + "/index.html");
@@ -70,7 +73,7 @@ app.on("ready", function() {
 	var Tray = require("tray");
 	var nativeImage = require("native-image");
 
-	var tray = new Tray(nativeImage.createFromPath(__dirname + "/img/icon.png"));
+	tray = new Tray(nativeImage.createFromPath(__dirname + "/img/icon.png"));
 
 	// タスクトレイのツールチップをアプリ名にする。
 	tray.setToolTip(app.getName());
@@ -143,14 +146,14 @@ app.on("ready", function() {
 	    	{
 	    		// ウインドウのバツを選択時はタスクトレイに最小化する。
 	            e.preventDefault();
-	            mainWindow.minimize();
+	            mainWindow.hide();
 	    	}
 	    });
 
 		// 閉じるボタン選択時にイベントを最小化として処理する。
 	    app.on('before-quit', function (e) {
             e.preventDefault();
-            mainWindow.minimize();
+            mainWindow.hide();
 	    });
 	}
 
