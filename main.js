@@ -86,7 +86,7 @@ app.on("ready", function() {
 	set_window_event_handler()
 
 	tray.displayBalloon({
-        title: "みんなのチャット",
+        title: "チャット",
         content: "起動しました。"
     });
 
@@ -119,7 +119,7 @@ app.on("ready", function() {
 
     	tray.setContextMenu(contextMenu);
 
-    	tray.setToolTip('みんなのチャット');
+    	tray.setToolTip('チャット');
 
 		return tray;
 	}
