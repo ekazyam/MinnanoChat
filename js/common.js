@@ -5,6 +5,9 @@ jQuery(function($){
 		// index.htmlのobject要素にURLを読み込む
 		$('#content').load(href);
 
+		// タイトルを更新
+		rewrite_title($(this));
+
 		// 遷移したURLを保持
 		url_store(href);
 
@@ -55,4 +58,10 @@ function window_resize()
    	var new_height = $(window).height() - 50;
    	// 新しい高さを設定する。
    	$('.container_chat').height(new_height);
+}
+
+function rewrite_title(select_data)
+{
+	// htmlのタイトルを更新
+	$('title').text('チャット > ' + select_data.text());
 }
