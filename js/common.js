@@ -2,8 +2,8 @@ jQuery(function($){
 	$('#links li a').click(function() {
 		var href = $(this).attr('href');
 
-		// index.htmlのobject要素にURLを読み込む
-		$('#content').load(href);
+		// index.htmlのwebview要素にURLを読み込む
+		document.getElementById("content").src = href;
 
 		// タイトルを更新
 		rewrite_title($(this));
@@ -19,7 +19,7 @@ jQuery(function($){
 
 	$('#do_refresh').click(function() {
 		// 現在表示しているURLを読み込む
-		$('#content').load(get_url());
+		document.getElementById("content").src = get_url();
 
 		// 画面リサイズイベントを発火
 		$(window).trigger('resize');
@@ -45,11 +45,10 @@ jQuery(function($){
 	    }
 	    // リサイズが終わってからCSSを変更する。
 	    timer = setTimeout(function() {
-
-	  	// ウインドウサイズのりサイズ
-	    window_resize();
+			window_resize();
 	    }, WAIT_TIME);
 	});
+
 });
 
 function window_resize()
@@ -57,7 +56,8 @@ function window_resize()
    	// リサイズ後のウインドウサイズ-50pxぐらいがちょうど良い様子。
    	var new_height = $(window).height() - 50;
    	// 新しい高さを設定する。
-   	$('.container_chat').height(new_height);
+   	// $('.container_chat').height(new_height);
+   	$('webview').height(new_height);
 }
 
 function rewrite_title(select_data)
