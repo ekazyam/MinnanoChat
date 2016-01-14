@@ -57,7 +57,8 @@ function window_resize()
    	var new_height = $(window).height() - 50;
    	// 新しい高さを設定する。
    	// $('.container_chat').height(new_height);
-   	$('webview').height(new_height);
+   	$('webview').height(1000);
+   	alert( $(window).height() );
 }
 
 function rewrite_title(select_data)
