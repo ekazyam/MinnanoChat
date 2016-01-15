@@ -48,7 +48,6 @@ jQuery(function($){
 			window_resize();
 	    }, WAIT_TIME);
 	});
-
 });
 
 function window_resize()
@@ -58,7 +57,6 @@ function window_resize()
    	// 新しい高さを設定する。
    	// $('.container_chat').height(new_height);
    	$('webview').height(1000);
-   	alert( $(window).height() );
 }
 
 function rewrite_title(select_data)
