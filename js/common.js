@@ -5,9 +5,6 @@ jQuery(function($){
 		// index.htmlのwebview要素にURLを読み込む
 		document.getElementById("content").src = href;
 
-		// タイトルを更新
-		rewrite_title($(this));
-
 		// 遷移したURLを保持
 		url_store(href);
 
@@ -48,6 +45,11 @@ jQuery(function($){
 			window_resize();
 	    }, WAIT_TIME);
 	});
+	// webviewに対するハンドラを作る
+	var web_page = document.getElementById("content");
+	web_page.addEventListener('did-stop-loading', function(e){
+		$('title').text(web_page.getTitle());
+	});
 });
 
 function window_resize()
@@ -62,5 +64,5 @@ function window_resize()
 function rewrite_title(select_data)
 {
 	// htmlのタイトルを更新
-	$('title').text('チャット > ' + select_data.text());
+	$('title').text(select_data.text());
 }
