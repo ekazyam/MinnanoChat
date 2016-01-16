@@ -1,4 +1,7 @@
 jQuery(function($){
+	// チャットログ表示タグ
+	var web_page = document.getElementById("content");
+
 	$('#links li a').click(function() {
 		var href = $(this).attr('href');
 
@@ -16,7 +19,7 @@ jQuery(function($){
 
 	$('#do_refresh').click(function() {
 		// 現在表示しているURLを読み込む
-		document.getElementById("content").src = get_url();
+		document.getElementById("content").src = web_page.getUrl();
 
 		// 画面リサイズイベントを発火
 		$(window).trigger('resize');
@@ -46,7 +49,6 @@ jQuery(function($){
 	    }, WAIT_TIME);
 	});
 	// webviewに対するハンドラを作る
-	var web_page = document.getElementById("content");
 	web_page.addEventListener('did-stop-loading', function(e){
 		$('title').text(web_page.getTitle());
 	});
