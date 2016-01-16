@@ -3,16 +3,7 @@
 	width:auto;
 	height:512px;
 }
-#main{
-  position: relative;
-}
-#side{
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%; 
-  height: auto;
-}
+
 .menu_list
 {
 	height: 100%;
