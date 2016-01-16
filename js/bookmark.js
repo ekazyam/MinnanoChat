@@ -55,7 +55,7 @@ function onloadInit() {
 							// ブックマークの未登録チェック
 							if(url_bookmark.length == 0)return;
 
-							$('#content').load(url_bookmark);
+							document.getElementById("content").src = url_bookmark;
                             url_store(url_bookmark);
 						};
 						reader.readAsText(file);
@@ -70,7 +70,7 @@ function onloadInit() {
 function url_store(moved_url) {
 	if (typeof url_store.url === 'undefined') {
 		// トップページをデフォルトで追加する。
-		url_store.url = './index.html';
+		url_store.url = 'http://chat.firebird.jp/';
 	}
 	else
 	{

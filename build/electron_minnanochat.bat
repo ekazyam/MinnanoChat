@@ -1,1 +1,1 @@
-electron-packager ../../MinnanoChat MinnanoChat --platform=win32 --arch=x64 --version=0.30.0
+electron-packager ../../MinnanoChat MinnanoChat --platform=win32 --arch=x64 --version=0.36.1 --overwrite
