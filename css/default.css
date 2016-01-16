@@ -1,6 +1,8 @@
 #web_dock
 {
 	width:auto;
+	/* exe化した場合にフレームが正常に表示されない一時対応*/
+	height:10000px;
 }
 
 .menu_list
