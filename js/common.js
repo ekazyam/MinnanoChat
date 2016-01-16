@@ -50,10 +50,13 @@ jQuery(function($){
 	});
 	// webviewに対するハンドラを作る
 	web_page.addEventListener('did-stop-loading', function(e){
-		$('title').text(web_page.getTitle());
-
 		// 画面リサイズイベントを発火
 		$(window).trigger('resize');
+	});
+
+	web_page.addEventListener('page-title-set', function(e){
+		// タイトルを取得できたタイミングでウインドウタイトルを更新
+		$('title').text(e.title);
 	});
 });
 
