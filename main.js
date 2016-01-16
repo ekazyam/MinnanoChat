@@ -118,7 +118,7 @@ app.on("ready", function() {
 		// タスクトレイのメニューを定義
 		var contextMenu = Menu.buildFromTemplate([
     	{
-    		label: "終了", click: function ()
+    		label: "アプリを終了", click: function ()
     	    { 
     	    	close_flag = true;
     	    	mainWindow.close();
