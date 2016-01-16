@@ -51,16 +51,17 @@ jQuery(function($){
 	// webviewに対するハンドラを作る
 	web_page.addEventListener('did-stop-loading', function(e){
 		$('title').text(web_page.getTitle());
+
+		// 画面リサイズイベントを発火
+		$(window).trigger('resize');
 	});
 });
 
 function window_resize()
 {
-   	// リサイズ後のウインドウサイズ-50pxぐらいがちょうど良い様子。
    	var new_height = $(window).height();
    	// 新しい高さを設定する。
-   	$('webview').height(new_height);
-   	$('.web_dock').height(new_height);
+   	$('#web_dock').height(new_height - 50);
 }
 
 function rewrite_title(select_data)
